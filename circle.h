@@ -53,7 +53,7 @@ void init(double *A, double *B, double *center, double *radius, double *tor)
   printf("Please enter the value for y of B: ");
   scanf("%lf",&B[1]);
 
-  printf("Summary\n\tCenter is at (%lf,%lf)\n\tA is at (%lf,%lf)\n\tB is at (%lf,%lf)\n\tRadius is %lf,\n\tTolarance is %lf\n",center[0],center[1],A[0],A[1],B[0],B[1],*tor,*radius);
+  printf("Summary\n\tCenter is at (%lf,%lf)\n\tA is at (%lf,%lf)\n\tB is at (%lf,%lf)\n\tRadius is %lf,\n\tTolarance is %lf\n",center[0],center[1],A[0],A[1],B[0],B[1],*radius,*tor);
 
   //Recenter
   A[0]=A[0]-center[0];
