@@ -53,6 +53,8 @@ void init(double *A, double *B, double *center, double *radius, double *tor)
   printf("Please enter the value for y of B: ");
   scanf("%lf",&B[1]);
 
+  printf("Summary\n\tCenter is at (%lf,%lf)\n\tA is at (%lf,%lf)\n\tB is at (%lf,%lf)\n\tRadius is %lf,\n\tTolarance is %lf\n",center[0],center[1],A[0],A[1],B[0],B[1],*tor,*radius);
+
   //Recenter
   A[0]=A[0]-center[0];
   A[1]=A[1]-center[1];
@@ -91,16 +93,16 @@ void compare(double *A, double *B)
   else if(A[0]==0)
     {
       if(A[1]>0 && B[0]>0)
-	printf("The rotation is clockwise.\n");
+	printf("The rotation is clockwise from A to B.\n");
       
       else if(A[1]>0 && B[0]<0)
-	printf("The rotation is counter clockwise.\n");
+	printf("The rotation is counter clockwise from A to B.\n");
       
       else if(A[1]<0 && B[0]>0)
-	printf("The rotation is counter clockwise.\n");
+	printf("The rotation is counter clockwise from A to B.\n");
       
       else if(A[1]<0 && B[0]<0)
-	printf("The rotation is  clockwise.\n");
+	printf("The rotation is  clockwise from A to B.\n");
     }
 
   else
@@ -111,38 +113,38 @@ void compare(double *A, double *B)
 	{
 	  if(slope>=0 && B[1]>slope*B[0])
 	    {
-	      printf("The rotation is counter clockwise.\n");
+	      printf("The rotation is counter clockwise from A to B.\n");
 	    }
 	  else if(slope>=0 && B[1]<slope*B[0])
 	    {
-	      printf("The rotation is clockwise.\n");
+	      printf("The rotation is clockwise from A to B.\n");
 	    }
 	  else if(slope<0 && B[1]>slope*B[0])
 	    {
-	      printf("The rotation is counter clockwise.\n");
+	      printf("The rotation is counter clockwise from A to B.\n");
 	    }
 	  else if(slope<0 && B[1]<slope*B[0])
 	    {
-	      printf("The rotation is clockwise.\n");
+	      printf("The rotation is clockwise from A to B.\n");
 	    }
 	}
       else if(A[0]<0)
 	{
 	  if(slope>=0 && B[1]>slope*B[0])
 	    {
-	      printf("The rotation is clockwise.\n");
+	      printf("The rotation is clockwise from A to B.\n");
 	    }
 	  else if(slope>=0 && B[1]<slope*B[0])
 	    {
-	      printf("The rotation is counter clockwise.\n");
+	      printf("The rotation is counter clockwise from A to B.\n");
 	    }
 	  else if(slope<0 && B[1]>slope*B[0])
 	    {
-	      printf("The rotation is clockwise.\n");
+	      printf("The rotation is clockwise from A to B.\n");
 	    }
 	  else if(slope<0 && B[1]<slope*B[0])
 	    {
-	      printf("The rotation is counter clockwise.\n");
+	      printf("The rotation is counter clockwise from A to B.\n");
 	    }
 	}
     }
