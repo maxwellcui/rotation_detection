@@ -7,21 +7,20 @@
 
 int main()
 {
+
   //Declare variables
-  //[0] for x
-  //[1] for y
+  //[0] for x, [1] for y
   double A[2];
   double B[2];
   double center[2];
-  double *radius;
-  double *tor_buffer;
-  const double tor=*tor_buffer;
+  double radius;
+  double tor;
 
   //Parameter specification process
-  init(A, B, center, radius, tor_buffer);
+  init(A, B, center, &radius, &tor);
 
   //Check if A and B are on the circle
-  if(!onArcCheck(A[0],A[1],*radius,tor) || !onArcCheck(B[0],B[1],*radius,tor))
+  if(!onArcCheck(A[0],A[1],radius,tor) || !onArcCheck(B[0],B[1],radius,tor))
     {
       printf("At least one of the points is not on the circle!\n");
       printf("Please check the coordinate or change the torlerance.\n");
@@ -30,7 +29,7 @@ int main()
 
   //Find the direction
   compare(A,B);
-  
+
   return 0;
 }
 

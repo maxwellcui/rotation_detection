@@ -1,3 +1,6 @@
+//Head file of circle direction program
+//Author: Zhaoyuan "Maxwell" Cui
+
 #include<stdio.h>
 #include<math.h>
 #include<stdbool.h>
@@ -5,41 +8,59 @@
 
 void init(double *A, double *B, double *center, double *radius, double *tor)
 {
-  printf("\tThe default center is at (0,0), radius is 1, torlance is 0.000001. Do you want to change any of these values? (Y/N)");
+  printf("The default center is at (0,0),\nradius is 1,\ntolerance is 0.1.\nDo you want to change any of these values? (Y/N): ");
   
   char sel;
   scanf("%c",&sel);
-  /*
-  while(sel!='n' || sel!='N' || sel!='y' || sel!='Y')
+  
+  while(sel!='n' && sel!='N' && sel!='y' && sel!='Y')
     {
+      scanf("%c",&sel);
       printf("Invalid input, please enter again. (Y/N)");
     }
-  */  
+    
   if(sel=='n' || sel=='N')
     {
       center[0]=0;
       center[1]=0;
       *radius=1;
-      *tor=0.000001;
+      *tor=0.1;
+      
     }
-
   else if(sel=='y' || sel=='Y')
     {
-      printf("Please enter the value for x of center");
-      scanf("%lf",center[0]);
-      printf("Please enter the value for y of center");
-      scanf("%lf",center[1]);
+      printf("Please enter the value for x of center: ");
+      scanf("%lf",&center[0]);
+
+      printf("Please enter the value for y of center: ");
+      scanf("%lf",&center[1]);
+
+      printf("Please enter the value for radius: ");
+      scanf("%lf",radius);
+
+      printf("Please enter the value for tolerance: ");
+      scanf("%lf",tor);
+      
     }
 
-  printf("Please enter the value for x of A");
-  scanf("%lf",A[0]);
-  printf("Please enter the value for y of A");
-  scanf("%lf",A[1]);
-  
-  printf("Please enter the value for x of B");
-  scanf("%lf",B[0]);
-  printf("Please enter the value for y of B");
-  scanf("%lf",B[1]);
+  printf("Please enter the value for x of A: ");
+  scanf("%lf",&A[0]);
+  printf("Please enter the value for y of A: ");
+  scanf("%lf",&A[1]);
+
+  printf("Please enter the value for x of B: ");
+  scanf("%lf",&B[0]);
+  printf("Please enter the value for y of B: ");
+  scanf("%lf",&B[1]);
+
+  //Recenter
+  A[0]=A[0]-center[0];
+  A[1]=A[1]-center[1];
+  B[0]=B[0]-center[0];
+  B[1]=B[1]-center[1];
+  center[0]=0;
+  center[1]=0;
+
 }
 
 
@@ -88,11 +109,11 @@ void compare(double *A, double *B)
       slope=A[1]/A[0];
       if(A[0]>0)
 	{
-	  if(slope>0 && B[1]>slope*B[0])
+	  if(slope>=0 && B[1]>slope*B[0])
 	    {
 	      printf("The rotation is counter clockwise.\n");
 	    }
-	  else if(slope>0 && B[1]<slope*B[0])
+	  else if(slope>=0 && B[1]<slope*B[0])
 	    {
 	      printf("The rotation is clockwise.\n");
 	    }
@@ -107,11 +128,11 @@ void compare(double *A, double *B)
 	}
       else if(A[0]<0)
 	{
-	  if(slope>0 && B[1]>slope*B[0])
+	  if(slope>=0 && B[1]>slope*B[0])
 	    {
 	      printf("The rotation is clockwise.\n");
 	    }
-	  else if(slope>0 && B[1]<slope*B[0])
+	  else if(slope>=0 && B[1]<slope*B[0])
 	    {
 	      printf("The rotation is counter clockwise.\n");
 	    }
